@@ -16,17 +16,17 @@ public class Array{
 
         //get largest and smallest in array
 
-        public static int getlargest(int num[]){
+        public static int getlargest(int numbers[]){
                 int largest=Integer.MIN_VALUE;//-infinity
                 int smallest=Integer.MAX_VALUE;//+infinity
 
-                for(int i=0;i<num.length;i++){
-                        if(largest<num[i]){
-                                largest=num[i];
+                for(int i=0;i<numbers.length;i++){
+                        if(largest<numbers[i]){
+                                largest=numbers[i];
 
                         }
-                        if(smallest>num[i]){
-                                smallest=num[i];//update
+                        if(smallest>numbers[i]){
+                                smallest=numbers[i];//update
                         }
                 }
                 System.out.println("smallest value is:"+smallest);
@@ -36,17 +36,17 @@ public class Array{
   
 
         //binary search in sorting array
-        public static int binarysearch(int numbersb[],int keyb){
-                int start=0,end =numbersb.length-1;
+        public static int binarysearch(int numbers[],int keyb){
+                int start=0,end =numbers.length-1;
                 while(start<=end){
                         int mid=(start+end)/2;
 
                         //comparison
-                        if(numbersb[mid]==keyb){
+                        if(numbers[mid]==keyb){
                                 return mid;
                                 
                         }
-                        if(numbersb[mid]<keyb){//right side after mid
+                        if(numbers[mid]<keyb){//right side after mid
                                 start=mid+1;
                         }
                         else{//left
@@ -59,11 +59,44 @@ public class Array{
 
 
         }
+       //reverse array 
+        public static void reversearray(int numbers[]){
+                int first=0,last=numbers.length-1;
+
+                while(first<last){
+                        //swap
+                        int temp=numbers[last];
+                        numbers[last]=numbers[first];
+                        numbers[first]=temp;
+
+
+                        first++;
+                        last--;
+                        
+                }
+
+        }
+
+
+        //pairs in array
+        public static void printpairs(int numbers[] ){
+                                int tp=0;
+                                for(int i=0;i<numbers.length;i++){
+                                        int curr=numbers[i];//2,4,6,8,10
+                                        for(int j=i+1;j<numbers.length;j++){
+                                                System.out.print( "(" +curr +"," +numbers[j]+ ")");
+                                                tp++;
+                
+                                        }
+                                        System.out.println();
+                                }
+                                System.out.println("total pairs:"+tp);
+                        }
         public static void main(String[] args) {
 
                 //liner search 
                 System.out.println("linear search ");
-                int numbers[]={2,4,6,8,10,112,14,16};
+                int numbers[]={2,4,6,8,10,12,14,16};
                 
                 int key=10;
                 int index=linearsearch(numbers, key);
@@ -78,17 +111,34 @@ public class Array{
 
                   //get largest and smallest in array
                   System.out.println("largest and smallest in array");
-                int num[]={3,4,6,7,8,34,12,35,56};
-                System.out.println("largest value is:"+getlargest(num));
+                
+                System.out.println("largest value is:"+getlargest(numbers));
 
 
 
                 //binary serch in sorting array
                 System.out.println("binary serach in sorting array");
-                int numbersb[]={2,4,6,8,10,12,14};
+               
                 int keyb=10;
 
-                System.out.println("index for keyb is: "+binarysearch(numbersb, keyb));
+                System.out.println("index for keyb is: "+binarysearch(numbers, keyb));
+
+                //reverse array 
+                System.out.println("reverse array");
+                reversearray(numbers);
+
+                for(int i=0;i<numbers.length;i++){
+                        System.out.print(numbers[i]+" ");
+                }
+                System.out.println();
+
+                //pairs in array 
+                System.out.println("pairs in array");
+                printpairs(numbers);
+
+
+
+
                 
                 
         }
